@@ -5,8 +5,8 @@
 GRPO finetuning of Muse Glimmer (28B) into a working software agent:
 Modal training/inference (RTX PRO 6000, FP4), Langfuse-tracked eval on
 `PersonalAILab/AFM-WebAgent-RL-Dataset`, Muse Wonder as LLM judge,
-LoRA published to `pranavupadhyaya52/muse_glimmer_agentFT`, and a
-Harbor multi-bench harness (`eval.py`) for independent benchmarking.
+LoRA published to `pranavupadhyaya52/muse_glimmer_agentFT`, and an
+lm-eval harness (`eval.py`) for independent benchmarking.
 
 | File | Role |
 |---|---|
@@ -20,12 +20,17 @@ Harbor multi-bench harness (`eval.py`) for independent benchmarking.
 | Base (`unsloth/Muse-Glimmer-30B-unsloth-bnb-4bit`) | 0.4141 |
 | Finetuned (`pranavupadhyaya52/muse_glimmer_agentFT`) | 0.4343 |
 
-Same harness, same prompts, same seed — the only delta is the LoRA
-weights. The finetuned score is higher by ~0.02 (~4 questions), which
-hypothetically suggests a small gain and possibly rules out regression on
-hard science reasoning — though at n=198 the gap sits inside statistical
-noise, so it is possibly just sampling variation. A second slice would be
-needed before reading more into it.
+Method: EleutherAI harness on a single RTX PRO 6000 via `lm_harness`
+(`python eval.py --lm-tasks gpqa_diamond_zeroshot --lm-source both`).
+Both arms share prompts, seed, batching, and loader — the only delta is
+the LoRA weights, attached onto a clean base load (a double-stacked
+adapter bug found mid-project was fixed before these numbers).
+
+The finetuned score is higher by ~0.02 (~4 questions), which hypothetically
+suggests a small gain and possibly rules out regression on hard science
+reasoning — though at n=198 the gap sits inside statistical noise, so it
+is possibly just sampling variation. A second slice would be needed before
+reading more into it.
 
 ```powershell
 python eval.py --lm-tasks gpqa_diamond_zeroshot --lm-source both
