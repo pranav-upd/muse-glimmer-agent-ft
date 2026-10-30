@@ -68,7 +68,7 @@ This project runs on three Muse models, each doing what it does best.
 
 **Muse Wonder** is the referee — called via API inference to judge every rollout in real time. Where answers are verifiable, ground truth rules; everywhere else, Wonder's scores become the reward signal that shapes the policy. No human labels, no waiting — the loop grades itself at machine speed.
 
-**Muse Spark 1.3** is the engineer — pair-programming inside OpenCode through the entire build. It scaffolded the training pipeline, diagnosed dead training steps from raw logs, verified the tokenizer against the model card, wired the Harbor eval harness, and hardened the deployment endpoints. Every debugging turnaround in this project has Spark's fingerprints on it.
+**Muse Spark 1.3** is the engineer — pair-programming inside OpenCode through the entire build. It scaffolded the training pipeline, diagnosed dead training steps from raw logs, verified the tokenizer against the model card, wired the lm_harness eval harness, and hardened the deployment endpoints. Every debugging turnaround in this project has Spark's fingerprints on it.
 
 Together: Glimmer learns, Wonder judges, Spark builds — a complete agent pipeline where Meta's models don't just participate, they staff every role.
 
