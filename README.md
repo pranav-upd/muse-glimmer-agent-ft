@@ -1,4 +1,4 @@
-# Muse Glimmer Agent FT — GRPO Finetuning + Harbor Eval
+# Muse Glimmer Agent FT — GRPO Finetuning + lm_harness evaluation
 
 [![Demo video](https://img.youtube.com/vi/Id0ilSVboPM/0.jpg)](https://youtu.be/Id0ilSVboPM)
 
